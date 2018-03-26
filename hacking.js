@@ -29,7 +29,8 @@ Happy Hacking !!!!
 ********************************************************************************************/
 
 const rp = require('request-promise');
-const BEARER_TOKEN = process.env.BEARER_TOKEN || '';
+const config = require ('./config.js');
+const BEARER_TOKEN = process.env.BEARER_TOKEN || config.BEARER_TOKEN;
 
 //Method to get the app version
 const getAppVersion = () =>
