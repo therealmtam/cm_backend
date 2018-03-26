@@ -27,6 +27,11 @@ const check = (req, res, next) => {
   next();
 };
 
+//Intro Path
+app.get('/', (req, res) => {
+  res.send('Welcome to CM 2.0!');
+});
+
 /*
 Common User endpoint examples:
 /user
