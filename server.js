@@ -2,6 +2,24 @@ const express = require ('express');
 const go = require ('./hacking.js');
 const app = express();
 
+//Middleware
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET, HEAD, PUT, PATCH, POST, DELETE');
+
+  //intercepts OPTIONS requests
+  if ('OPTIONS' === req.method) {
+    res.send(200);
+  } else {
+    next();
+  }
+});
+
+//Middleware for debugging;
+const check = (req, res, next) => {
+  console.log(req.url);
+  next();
+};
 
 //get request handler
 const handleGetReq = (req, res) => {
@@ -19,12 +37,6 @@ const handleDeleteReq = (req, res) => {
   .then(({ status, data }) => {
     res.status(status).send(data);
   });
-};
-
-//middleware for debugging;
-const check = (req, res, next) => {
-  console.log(req.url);
-  next();
 };
 
 //Intro Path
