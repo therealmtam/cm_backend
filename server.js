@@ -9,7 +9,7 @@ app.use(function (req, res, next) {
 
   //intercepts OPTIONS requests
   if ('OPTIONS' === req.method) {
-    res.send(200);
+    res.send();
   } else {
     next();
   }
